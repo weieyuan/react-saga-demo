@@ -16,8 +16,16 @@ function* getState() {
 	console.log(state)
 }
 
+function* pointCut(){
+	while(true) {
+		const action = yield take(['add', 'sub'])
+		console.log(action)
+	}
+}
+
 export default function* rootSaga() {
 	yield all([
-		listenEvery()
+		listenEvery(),
+		pointCut()
 	])
 }
